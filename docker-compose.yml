@@ -1,0 +1,32 @@
+name: my_app
+
+services:
+  api:
+    build: api
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./api:/usr/src/my_app_api
+    environment:
+      # rails configs
+      RAILS_ENV: development
+      POSTGRES_HOST: db
+      # DB configs
+      POSTGRES_DB: my_app_db
+      POSTGRES_USER: my_app_db_user
+      POSTGRES_PASSWORD: my_app_db_password_dev!
+  db:
+    image: postgres
+    volumes:
+      - postgres:/var/lib/
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: my_app_db
+      POSTGRES_USER: my_app_db_user
+      POSTGRES_PASSWORD: my_app_db_password_dev!
+
+volumes:
+  postgres:

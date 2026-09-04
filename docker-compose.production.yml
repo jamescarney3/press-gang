@@ -1,0 +1,27 @@
+name: my_app_production
+
+services:
+  api:
+    extends:
+      file: docker-compose.yml
+      service: api
+    build:
+      target: production
+    environment:
+      # rails configs
+      RAILS_ENV: production
+      # DB configs
+      POSTGRES_DB: ${POSTGRES_DB:?error}
+      POSTGRES_USER: ${POSTGRES_USER:?error}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?error}
+  db:
+    extends:
+      file: docker-compose.yml
+      service: db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?error}
+      POSTGRES_USER: ${POSTGRES_USER:?error}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?error}
+
+volumes:
+  postgres:
