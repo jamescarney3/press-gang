@@ -25,19 +25,25 @@ module Authentication
       Current.session ||= find_session_by_cookie
     end
 
+    # don't like this being a session id honestly
     def find_session_by_cookie
       Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     end
 
+    # maybe not important in a SPA that does its own routing and redirection; unlikely that
+    # a strategy for this really involves the server if needed at all, but it would be possible
+    # to do with something other than a cookie
     def request_authentication
       session[:return_to_after_authenticating] = request.url
       redirect_to new_session_path
     end
 
+    # see above
     def after_authentication_url
       session.delete(:return_to_after_authenticating) || root_url
     end
 
+    # rename/alias this "login" maybe??
     def start_new_session_for(user)
       user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
         Current.session = session
@@ -45,6 +51,7 @@ module Authentication
       end
     end
 
+    #  same here for "logout"
     def terminate_session
       Current.session.destroy
       cookies.delete(:session_id)
