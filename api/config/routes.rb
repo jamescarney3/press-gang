@@ -12,5 +12,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "application#root"
+  root "application#root"
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      get "/", to: "application#api_root"
+      resource :session, only: %i[ create destroy ]
+    end
+  end
 end
