@@ -14,28 +14,10 @@ Bundler/OrderedGems:
     - "Gemfile"
 
 # Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLinesAroundMethodBody:
-  Exclude:
-    - "app/controllers/concerns/api_authentication.rb"
-
-# Offense count: 1
 # Configuration parameters: AllowedParentClasses.
 Lint/MissingSuper:
   Exclude:
     - "app/policies/application_policy.rb"
-
-# Offense count: 3
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle, EnforcedStyleForClasses, EnforcedStyleForModules.
-# SupportedStyles: nested, compact
-# SupportedStylesForClasses: ~, nested, compact
-# SupportedStylesForModules: ~, nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - "app/controllers/api/v1/application_controller.rb"
-    - "app/controllers/api/v1/sessions_controller.rb"
-    - "test/controllers/api/v1/sessions_controller_test.rb"
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
@@ -52,20 +34,6 @@ Style/GlobalStdStream:
   Exclude:
     - "bin/setup"
     - "config/environments/production.rb"
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle, Recursive.
-# SupportedStyles: literals, strict
-Style/MutableConstant:
-  Exclude:
-    - "app/controllers/concerns/access_control.rb"
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/RedundantFileExtensionInRequire:
-  Exclude:
-    - "bin/ci"
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).

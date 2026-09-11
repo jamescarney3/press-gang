@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
-class Api::V1::ApplicationController < ActionController::Base
-  include ApiAuthentication
-  # include AccessControl
+module Api
+  module V1
+    class ApplicationController < ActionController::Base
+      include ApiAuthentication
+      # include AccessControl
 
-  def api_root
-    render plain: 'press gang api'
+      def api_root
+        render plain: 'press gang api'
+      end
+    end
   end
 end

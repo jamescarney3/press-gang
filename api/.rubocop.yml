@@ -10,3 +10,10 @@ Style/Documentation:
 Style/NumericLiterals:
   Exclude:
     - "db/schema.rb"
+
+# Offense count: 1 as of 2026-9-11
+# This cop supports safe autocorrection (--autocorrect).
+# NB: was this generated? look into if bored
+Style/RedundantFileExtensionInRequire:
+  Exclude:
+    - "bin/ci"

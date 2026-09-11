@@ -28,7 +28,6 @@ module ApiAuthentication
   end
 
   def require_authentication
-
     head :unprocessable_entity unless find_session
   end
 
