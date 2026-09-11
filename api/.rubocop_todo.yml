@@ -107,13 +107,6 @@ Style/MutableConstant:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
-Style/NumericLiterals:
-  Exclude:
-    - "db/schema.rb"
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
 Style/RedundantFileExtensionInRequire:
   Exclude:
     - "bin/ci"
@@ -129,15 +122,6 @@ Style/RedundantInterpolation:
 Style/StructInheritance:
   Exclude:
     - "app/policies/application_policy.rb"
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  Exclude:
-    - "Gemfile"
-    - "config/initializers/filter_parameter_logging.rb"
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).

@@ -5,3 +5,8 @@ inherit_from: .rubocop_todo.yml
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
   Enabled: false
+
+# db/schema.rb is a generated file, don't worry about this
+Style/NumericLiterals:
+  Exclude:
+    - "db/schema.rb"
