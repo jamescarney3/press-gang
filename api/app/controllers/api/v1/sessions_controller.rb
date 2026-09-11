@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Api::V1::SessionsController < Api::V1::ApplicationController
+  # TODO: decide what to do about csrf
   skip_before_action :verify_authenticity_token
   allow_unauthenticated_access only: %i[create]
 
+  # TODO: rate limit this
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       log_in!(user)
