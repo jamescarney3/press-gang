@@ -4,11 +4,9 @@ class PasswordsController < ApplicationController
   allow_unauthenticated_access
   before_action :set_user_by_token, only: %i[edit update]
 
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(params.permit(:password, :password_confirmation))

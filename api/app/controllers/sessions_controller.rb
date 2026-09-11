@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
     redirect_to new_session_path, alert: 'Try again later.'
   }
 
-  def new
-  end
+  def new; end
 
   def create
     if (user = User.authenticate_by(params.permit(:email_address, :password)))
