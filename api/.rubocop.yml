@@ -1,1 +1,7 @@
 inherit_from: .rubocop_todo.yml
+
+# Offense count: 19 as of 2026-9-11
+# NB: turn this back on if including rdoc
+# Configuration parameters: AllowedConstants.
+Style/Documentation:
+  Enabled: false
