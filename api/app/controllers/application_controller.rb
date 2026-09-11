@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def root
-    render plain: "hello world"
+    render plain: 'hello world'
   end
 end

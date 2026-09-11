@@ -3,8 +3,8 @@ module AccessControl
 
   class NotAuthorizedError < StandardError; end
 
-  CONTROLLER_SUFFIX = "Controller"
-  POLICY_SUFFIX = "Policy"
+  CONTROLLER_SUFFIX = 'Controller'
+  POLICY_SUFFIX = 'Policy'
 
   included do
     def authorize(record)

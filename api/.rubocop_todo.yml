@@ -159,13 +159,6 @@ Style/RedundantInterpolation:
   Exclude:
     - "app/controllers/concerns/access_control.rb"
 
-# Offense count: 158
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-# Style/StringLiterals:
-#   Enabled: false
-
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/StructInheritance:

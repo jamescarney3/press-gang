@@ -3,6 +3,6 @@ class Api::V1::ApplicationController < ActionController::Base
   # include AccessControl
 
   def api_root
-    render plain: "press gang api"
+    render plain: 'press gang api'
   end
 end
