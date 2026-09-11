@@ -68,16 +68,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
     - "config/environments/production.rb"
     - "test/controllers/passwords_controller_test.rb"
 
-# Offense count: 12
-# This cop supports safe autocorrection (--autocorrect).
-Layout/SpaceInsidePercentLiteralDelimiters:
-  Exclude:
-    - "Gemfile"
-    - "app/controllers/api/v1/sessions_controller.rb"
-    - "app/controllers/passwords_controller.rb"
-    - "app/controllers/sessions_controller.rb"
-    - "config/routes.rb"
-
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: AllowSafeAssignment.
@@ -117,13 +107,6 @@ Style/EmptyMethod:
   Exclude:
     - "app/controllers/passwords_controller.rb"
     - "app/controllers/sessions_controller.rb"
-
-# Offense count: 47
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-# Style/FrozenStringLiteralComment:
-#   Enabled: false
 
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).

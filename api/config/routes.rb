@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get '/', to: 'application#api_root'
-      resource :session, only: %i[ create destroy ]
+      resource :session, only: %i[create destroy]
     end
   end
 end
