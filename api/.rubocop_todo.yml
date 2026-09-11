@@ -40,9 +40,3 @@ Style/GlobalStdStream:
 Style/RedundantInterpolation:
   Exclude:
     - "app/controllers/concerns/access_control.rb"
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/StructInheritance:
-  Exclude:
-    - "app/policies/application_policy.rb"

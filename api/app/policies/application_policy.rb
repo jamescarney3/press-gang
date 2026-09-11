@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ApplicationPolicy < Struct.new(:user, :record)
+ApplicationPolicy = Struct.new(:user, :record) do
   attr_reader :user, :record
 
   def initialize(user, record)
