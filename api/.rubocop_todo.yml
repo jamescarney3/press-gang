@@ -34,9 +34,3 @@ Style/GlobalStdStream:
   Exclude:
     - "bin/setup"
     - "config/environments/production.rb"
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/RedundantInterpolation:
-  Exclude:
-    - "app/controllers/concerns/access_control.rb"
