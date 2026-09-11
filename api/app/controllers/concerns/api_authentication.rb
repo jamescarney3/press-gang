@@ -15,29 +15,29 @@ module ApiAuthentication
   end
 
   private
-    def find_session
-      session = Session.find_by(session_token: cookies.signed.permanent[:session_token]) if cookies.signed.permanent[:session_token]
-      Current.session ||= session
-    end
+  def find_session
+    session = Session.find_by(session_token: cookies.signed.permanent[:session_token]) if cookies.signed.permanent[:session_token]
+    Current.session ||= session
+  end
 
-    def authenticated?
-      !!find_session
-    end
+  def authenticated?
+    !!find_session
+  end
 
-    def require_authentication
+  def require_authentication
 
-      head :unprocessable_entity unless find_session
-    end
+    head :unprocessable_entity unless find_session
+  end
 
-    def log_in!(user)
-      user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
-        cookies.signed.permanent[:session_token] = session.session_token
-        Current.session = session
-      end
+  def log_in!(user)
+    user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
+      cookies.signed.permanent[:session_token] = session.session_token
+      Current.session = session
     end
+  end
 
-    def log_out!
-      Current.session.destroy
-      cookies.delete(:session_token)
-    end
+  def log_out!
+    Current.session.destroy
+    cookies.delete(:session_token)
+  end
 end

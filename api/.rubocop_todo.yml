@@ -45,19 +45,6 @@ Layout/IndentationConsistency:
     - "app/models/session.rb"
     - "test/controllers/passwords_controller_test.rb"
 
-# Offense count: 19
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Width, EnforcedStyleAlignWith, AllowedPatterns.
-# SupportedStylesAlignWith: start_of_line, relative_to_receiver
-Layout/IndentationWidth:
-  Exclude:
-    - "app/controllers/concerns/access_control.rb"
-    - "app/controllers/concerns/api_authentication.rb"
-    - "app/controllers/concerns/authentication.rb"
-    - "app/controllers/passwords_controller.rb"
-    - "app/models/session.rb"
-    - "test/controllers/passwords_controller_test.rb"
-
 # Offense count: 6
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBrackets.

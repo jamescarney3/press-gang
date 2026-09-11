@@ -19,15 +19,15 @@ module AccessControl
   end
 
   private
-    def policy_class
-      "#{self.class}".gsub(CONTROLLER_SUFFIX, POLICY_SUFFIX).constantize
-    end
+  def policy_class
+    "#{self.class}".gsub(CONTROLLER_SUFFIX, POLICY_SUFFIX).constantize
+  end
 
-    def policy_action
-      "#{params[:action]}?"
-    end
+  def policy_action
+    "#{params[:action]}?"
+  end
 
-    def scope_action
-      "#{params[:action]}_scope"
-    end
+  def scope_action
+    "#{params[:action]}_scope"
+  end
 end
