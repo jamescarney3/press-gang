@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationPolicy < Struct.new(:user, :record)
   attr_reader :user, :record
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::ApplicationController < ActionController::Base
   include ApiAuthentication
   # include AccessControl

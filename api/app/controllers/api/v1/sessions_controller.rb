@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::SessionsController < Api::V1::ApplicationController
   skip_before_action :verify_authenticity_token
   allow_unauthenticated_access only: %i[ create ]
