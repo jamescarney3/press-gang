@@ -7,7 +7,7 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 
   # TODO: rate limit this
   def create
-    if user = User.authenticate_by(params.permit(:email_address, :password))
+    if (user = User.authenticate_by(params.permit(:email_address, :password)))
       log_in!(user)
       # TODO: some sort of show view for initial user data might be useful here
       head :ok

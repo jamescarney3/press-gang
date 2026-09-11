@@ -19,14 +19,6 @@ Layout/EmptyLinesAroundMethodBody:
   Exclude:
     - "app/controllers/concerns/api_authentication.rb"
 
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    - "app/controllers/api/v1/sessions_controller.rb"
-    - "app/controllers/sessions_controller.rb"
-
 # Offense count: 1
 # Configuration parameters: AllowedParentClasses.
 Lint/MissingSuper:
