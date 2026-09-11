@@ -15,6 +15,7 @@ module ApiAuthentication
   end
 
   private
+
   def find_session
     if cookies.signed.permanent[:session_token]
       session = Session.find_by(session_token: cookies.signed.permanent[:session_token])

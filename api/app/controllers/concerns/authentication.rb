@@ -15,6 +15,7 @@ module Authentication
   end
 
   private
+
   def authenticated?
     resume_session
   end
