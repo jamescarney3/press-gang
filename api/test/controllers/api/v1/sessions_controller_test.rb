@@ -8,14 +8,14 @@ module Api
       setup { @user = User.take }
 
       test 'create with valid credentials' do
-        post api_v1_session_path, params: { email_address: @user.email_address, password: 'password' }
+        post api_v1_session_path, params: { credentials: { email_address: @user.email_address, password: 'password' } }
 
         assert_response :success
         assert cookies[:session_token]
       end
 
       test 'create with invalid credentials' do
-        post api_v1_session_path, params: { email_address: @user.email_address, password: 'wrong' }
+        post api_v1_session_path, params: { credentials: { email_address: @user.email_address, password: 'wrong' } }
 
         assert_response :unprocessable_entity
         assert_nil cookies[:session_token]
