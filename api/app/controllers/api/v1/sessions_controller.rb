@@ -3,8 +3,6 @@
 module Api
   module V1
     class SessionsController < Api::V1::ApplicationController
-      # TODO: decide what to do about csrf
-      skip_before_action :verify_authenticity_token
       allow_unauthenticated_access only: %i[create]
 
       # TODO: rate limit this

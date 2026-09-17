@@ -19,6 +19,8 @@ services:
       POSTGRES_DB: my_app_db
       POSTGRES_USER: my_app_db_user
       POSTGRES_PASSWORD: my_app_db_password_dev!
+      # CORS
+      CLIENT_ORIGIN: http://localhost:5173
   db:
     image: postgres
     volumes:
