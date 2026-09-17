@@ -7,7 +7,9 @@
 one:
   role_title: Yak Shaver
   company: foo_corp
+  user: main
 
 two:
   role_title: Bike Shed Architect
   company: bar_corp
+  user: main
