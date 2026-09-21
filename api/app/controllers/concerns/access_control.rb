@@ -21,7 +21,11 @@ module AccessControl
   private
 
   def policy_class
-    self.class.to_s.gsub(CONTROLLER_SUFFIX, POLICY_SUFFIX).constantize
+    "#{model_class}#{POLICY_SUFFIX}".constantize
+  end
+
+  def model_class
+    self.class.name.demodulize.gsub(CONTROLLER_SUFFIX, "").singularize
   end
 
   def policy_action
