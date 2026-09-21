@@ -17,9 +17,7 @@ module ApiAuthentication
   private
 
   def find_session
-    if cookies.signed[:session_token]
-      session = Session.find_by(session_token: cookies.signed[:session_token])
-    end
+    session = Session.find_by(session_token: cookies.signed[:session_token]) if cookies.signed[:session_token]
     Current.session ||= session
   end
 

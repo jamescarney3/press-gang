@@ -4,7 +4,9 @@
 Style/Documentation:
   Enabled: false
 
-# db/schema.rb is a generated file, don't worry about this
-Style/NumericLiterals:
+# db/schema.rb is a generated file, and migrations are mostly generated;
+# don't worry about these
+AllCops:
   Exclude:
     - "db/schema.rb"
+    - "db/migrate/*"

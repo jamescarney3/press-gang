@@ -8,51 +8,50 @@ if Rails.env.development?
   # some users
   ned = User.find_or_create_by(email_address: 'ned.ludd@gmail.com') do |u|
     u.password = 'ned$pass'
-    u.first_name = "Ned"
-    u.last_name = "Ludd"
+    u.first_name = 'Ned'
+    u.last_name = 'Ludd'
   end
 
   artemis = User.find_or_create_by(email_address: 'artemis.cat@gmail.com') do |u|
     u.password = 'cat_stick!'
-    u.first_name = "Artemis"
-    u.last_name = "Cat"
+    u.first_name = 'Artemis'
+    u.last_name = 'Cat'
   end
 
   freyja = User.find_or_create_by(email_address: 'freyja.cat@gmail.com') do |u|
     u.password = 'crunchies$$$'
-    u.first_name = "Freyja"
-    u.last_name = "Cat"
+    u.first_name = 'Freyja'
+    u.last_name = 'Cat'
   end
 
   users = [ned, artemis, freyja]
 
   # some companies
-  foocorp = Company.find_or_create_by(name: "Foo Corp, Inc.") do |c|
-    c.website_url = "http://www.foocorp.com"
+  foocorp = Company.find_or_create_by(name: 'Foo Corp, Inc.') do |c|
+    c.website_url = 'http://www.foocorp.com'
   end
 
-  barcorp = Company.find_or_create_by(name: "Bar Corp, Ltd.") do |c|
-    c.website_url = "http://www.barcorp.com"
+  barcorp = Company.find_or_create_by(name: 'Bar Corp, Ltd.') do |c|
+    c.website_url = 'http://www.barcorp.com'
   end
 
-  bazly = Company.find_or_create_by(name: "Bazly ") do |c|
-    c.website_url = "http://www.bazly.com"
+  bazly = Company.find_or_create_by(name: 'Bazly ') do |c|
+    c.website_url = 'http://www.bazly.com'
   end
 
   companies = [foocorp, barcorp, bazly]
 
-
   # some job applications
   titles = [
-    "Cruft Eliminator",
-    "Yak Shaver",
-    "Toil Reducer",
-    "JSON Response Composer",
-    "Regex Matcher",
-    "Scrum Overlord",
-    "Email Deleter",
-    "Bike Shed Architect",
-    "Holodeck Janitor",
+    'Cruft Eliminator',
+    'Yak Shaver',
+    'Toil Reducer',
+    'JSON Response Composer',
+    'Regex Matcher',
+    'Scrum Overlord',
+    'Email Deleter',
+    'Bike Shed Architect',
+    'Holodeck Janitor'
   ]
 
   users.each do |u|
