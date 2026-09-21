@@ -4,7 +4,7 @@ module Api
   module V1
     class ApplicationController < ActionController::Base
       include ApiAuthentication
-      # include AccessControl
+      include AccessControl
 
       skip_before_action :verify_authenticity_token
 

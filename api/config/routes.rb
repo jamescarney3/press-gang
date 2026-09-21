@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get "job_applications/index"
+    end
+  end
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -20,6 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/', to: 'application#api_root'
       resource :session, only: %i[create destroy]
+      resources :job_applications
     end
   end
 end

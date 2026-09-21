@@ -17,8 +17,8 @@ module ApiAuthentication
   private
 
   def find_session
-    if cookies.signed.permanent[:session_token]
-      session = Session.find_by(session_token: cookies.signed.permanent[:session_token])
+    if cookies.signed[:session_token]
+      session = Session.find_by(session_token: cookies.signed[:session_token])
     end
     Current.session ||= session
   end
@@ -33,7 +33,7 @@ module ApiAuthentication
 
   def log_in!(user)
     user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
-      cookies.signed.permanent[:session_token] = session.session_token
+      cookies.signed.permanent[:session_token] = { value: session.session_token, httponly: true, same_site: :lax }
       Current.session = session
     end
   end
