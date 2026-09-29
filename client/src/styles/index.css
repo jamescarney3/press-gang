@@ -1,0 +1,52 @@
+@import '~/styles/theme.css';
+@import '~/styles/reset.css';
+
+:root {
+  color-scheme: light dark;
+  font-size: var(--font-size-base);
+
+  font: var(--font-family-body);
+  color: var(--color-fg);
+  background: var(--color-bg);
+
+  @media (max-width: 1024px) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+#root {
+  width: var(--breakpoint-xl);
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  font-family: var(--font-family-heading);
+  color: var(--color-fg);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  letter-spacing: var(--letter-spacing-4xl);
+  margin: var(--spacing-8) 0;
+
+  @media (max-width: var(--breakpoint-sm)) {
+    font-size: var(--font-size-3xl);
+    margin: var(--spacing-5) 0;
+  }
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-2xl);
+  letter-spacing: var(--letter-spacing-xl);
+  margin: 0 0 var(--spacing-2);
+  @media (max-width: var(--breakpoint-sm)) {
+    font-size: var(--font-size-lg);
+  }
+}
