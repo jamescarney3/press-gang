@@ -21,6 +21,12 @@ services:
       POSTGRES_PASSWORD: my_app_db_password_dev!
       # CORS
       CLIENT_ORIGIN: http://localhost:5173
+  client:
+    build: client
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./client:/usr/src/my_app_client
   db:
     image: postgres
     volumes:
