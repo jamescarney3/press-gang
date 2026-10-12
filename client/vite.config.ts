@@ -14,6 +14,11 @@ export default defineConfig({
       test: path.resolve(import.meta.dirname, './test'),
     },
   },
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly',
+    },
+  },
   test: {
     environment: 'jsdom',
   },
