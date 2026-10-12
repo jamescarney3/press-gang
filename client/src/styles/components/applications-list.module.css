@@ -1,0 +1,28 @@
+.application-list {
+  padding: var(--spacing-0);
+
+  li {
+    margin: var(--spacing-1) var(--spacing-0);
+  }
+}
+
+.link {
+  color: inherit;
+}
+
+.applications-list-item {
+  display: flex;
+  font-family: var(--font-family-body);
+  background-color: var(--color-bg-muted);
+  padding: var(--spacing-2);
+  border-radius: var(--radius-md);
+
+  &:hover {
+    background-color: var(--color-bg-subtle);
+  }
+
+  * {
+    display: block;
+    flex: 1 1 0px;
+  }
+}
