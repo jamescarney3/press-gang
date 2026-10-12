@@ -96,7 +96,7 @@
 
   /* ===== Typography ===== */
   --font-family-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-heading: 'Montserrat', system-ui, sans-serif;
+  --font-family-heading: 'Charter', system-ui, sans-serif;
   --font-family-mono: ui-monospace, Consolas, monospace;
   --font-size-xs: 0.6944rem;
   --font-size-sm: 0.8333rem;
