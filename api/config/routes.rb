@@ -24,8 +24,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get '/', to: 'application#api_root'
-      resource :session, only: %i[create destroy]
-      resources :job_applications
+      resource :session, only: %i[create destroy show]
+      resources :job_applications, only: %i[index create]
+      resources :companies, only: %i[index]
     end
   end
 end

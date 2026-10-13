@@ -7,6 +7,24 @@ module Api
         @job_applications = policy_scope JobApplication.all
         render json: @job_applications
       end
+
+      def create
+        @job_application = JobApplication.new(user: Current.user)
+
+        authorize @job_application
+        authorize @job_application.company
+
+        # do not save yet!
+        byebug
+
+        render json: @job_application
+      end
+
+      private
+
+      def job_application_params
+        params.require(:job_application).permit(:role_title, company_attributes: [:name, :website_url])
+      end
     end
   end
 end

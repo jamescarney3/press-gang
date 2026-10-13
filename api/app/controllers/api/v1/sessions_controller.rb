@@ -5,6 +5,10 @@ module Api
     class SessionsController < Api::V1::ApplicationController
       allow_unauthenticated_access only: %i[create]
 
+      def show
+        head :ok
+      end
+
       # TODO: rate limit this
       def create
         if (user = User.authenticate_by(params.require(:credentials).permit(:email_address, :password)))
