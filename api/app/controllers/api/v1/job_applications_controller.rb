@@ -9,13 +9,13 @@ module Api
       end
 
       def create
-        @job_application = JobApplication.new(user: Current.user)
+        @job_application = JobApplication.new(job_application_params)
+        @job_application.user = Current.user
 
         authorize @job_application
         authorize @job_application.company
 
-        # do not save yet!
-        byebug
+        @job_application.save!
 
         render json: @job_application
       end
@@ -23,7 +23,7 @@ module Api
       private
 
       def job_application_params
-        params.require(:job_application).permit(:role_title, company_attributes: [:name, :website_url])
+        params.require(:job_application).permit(:role_title, :listing_url, company_attributes: [:name, :website_url])
       end
     end
   end
