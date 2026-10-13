@@ -222,6 +222,9 @@
   --color-info: var(--color-info-600);
   --color-info-subtle: var(--color-info-50);
   --color-info-fg: var(--color-info-800);
+
+  /* ===== Semantic aliases (by role) ===== */
+  --radius-control: var(--radius-md);
 }
 
 @media (prefers-color-scheme: dark) {
