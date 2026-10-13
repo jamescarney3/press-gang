@@ -14,27 +14,29 @@ const JobApplicationsNew = () => {
   };
 
   return (
-    <form onSubmit={submitJobApplicationForm}>
-      <label>
-        <span>Role title:</span>
-        <br />
-        <input name="jobApplication[roleTitle]" />
-      </label>
-      <br />
-      <label>
-        <span>Company name:</span>
-        <br />
-        <input name="jobApplication[companyAttributes][name]" />
-      </label>
-      <br />
-      <label>
-        <span>Company website url:</span>
-        <br />
-        <input name="jobApplication[companyAttributes][websiteUrl]" />
-      </label>
-      <br />
-      <button type="submit">Create job application</button>
-    </form>
+    <section>
+      <h1>Create Job Application</h1>
+      <form onSubmit={submitJobApplicationForm}>
+        <label>
+          <span>Role title:</span>
+          <input name="jobApplication[roleTitle]" autoComplete="off" />
+        </label>
+
+        <label>
+          <span>Company name:</span>
+          <input name="jobApplication[companyAttributes][name]" autoComplete="off" />
+        </label>
+
+        <label>
+          <span>Company website url:</span>
+          <input name="jobApplication[companyAttributes][websiteUrl]" autoComplete="off" />
+        </label>
+
+        <button type="submit" className="btn btn-primary">
+          Create job application
+        </button>
+      </form>
+    </section>
   );
 };
 

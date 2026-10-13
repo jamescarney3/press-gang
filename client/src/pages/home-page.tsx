@@ -1,3 +1,4 @@
+import ApplicationsList from '~/components/applications-list';
 import { useGetJobApplications, useGetCompanies } from '~/services/queries';
 import type { JobApplication, Company } from '~/types';
 
@@ -22,13 +23,14 @@ const useHomePageState = () => {
 };
 
 const HomePage = () => {
-  const { isPending, isError } = useHomePageState();
+  const { isPending, isError, data } = useHomePageState();
 
   if (isPending) return <div>loading</div>;
   if (isError) return <div>page error</div>;
   return (
     <section>
       <h1>Job Applications</h1>
+      <ApplicationsList jobApplications={data} />
     </section>
   );
 };

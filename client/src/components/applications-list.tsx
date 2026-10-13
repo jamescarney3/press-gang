@@ -8,8 +8,8 @@ interface ApplicationsListProps {
 }
 
 const renderApplication = (jobApplication: JobApplication & { company: Company }) => (
-  <Link to={`job-applications/${jobApplication.id}`} className={styles.link}>
-    <li key={jobApplication.id} className={styles.applicationsListItem}>
+  <Link to={`job-applications/${jobApplication.id}`} key={`application-${jobApplication.id}`} className={styles.link}>
+    <li className={styles.applicationsListItem}>
       <span>{jobApplication.company.name}</span>
       <span>{jobApplication.roleTitle}</span>
     </li>
