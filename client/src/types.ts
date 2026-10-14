@@ -11,6 +11,7 @@ export interface JobApplication {
   id: number;
   companyId: number;
   roleTitle: string;
+  listingUrl: string;
   createdAt: string;
   updatedAt: string;
 }
