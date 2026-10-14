@@ -52,6 +52,13 @@ h2 {
 }
 
 /********************************/
+/* layout                      */
+/********************************/
+section {
+  padding: var(--spacing-2);
+}
+
+/********************************/
 /* BUTTONS                      */
 /********************************/
 button,
@@ -59,12 +66,17 @@ button,
   padding: var(--spacing-2) var(--spacing-4);
   border-radius: var(--radius-control);
   font-family: var(--font-family-heading);
+  cursor: pointer;
 }
 
 .btn-primary {
   background-color: var(--color-primary-500);
   color: var(--color-neutral-50);
   border: none;
+
+  &:hover {
+    background-color: var(--color-primary-600);
+  }
 }
 
 /********************************/
@@ -85,6 +97,7 @@ form {
     border-radius: var(--radius-control);
     border-style: solid;
     display: block;
+    width: var(--spacing-64);
 
     &:focus-visible {
       outline-color: var(--color-ring);
