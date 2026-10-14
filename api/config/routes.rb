@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/', to: 'application#api_root'
       resource :session, only: %i[create destroy show]
-      resources :job_applications, only: %i[index create]
+      resources :job_applications, only: %i[index show create]
       resources :companies, only: %i[index]
     end
   end

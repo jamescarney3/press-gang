@@ -8,6 +8,16 @@ module Api
         render json: @job_applications
       end
 
+      def show
+        @job_application = JobApplication.find(params[:id])
+
+        authorize @job_application
+
+        render json: @job_application.as_json(include: {
+          company: { only: [:name, :website_url] }
+        }, methods: [:applied_date])
+      end
+
       def create
         @job_application = JobApplication.new(job_application_params)
         @job_application.user = Current.user
