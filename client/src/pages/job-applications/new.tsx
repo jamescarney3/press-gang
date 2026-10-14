@@ -1,16 +1,23 @@
+import { useNavigate } from 'react-router-dom';
 import type { SubmitEventHandler } from 'react';
 
-// import { useCreateJobApplication } from '~/services/queries';
+import { useCreateJobApplication } from '~/services/queries';
 import { serializeFormData } from '~/utils/form-data';
+import type { JobApplication } from '~/types';
 
 const JobApplicationsNew = () => {
-  // const createJobApplicationMutation = useCreateJobApplication();
+  const navigate = useNavigate();
+
+  const createJobApplicationMutation = useCreateJobApplication({
+    onSuccess: (jobApplication: JobApplication) => {
+      navigate(['/job-applications', jobApplication.id].join('/'));
+    },
+  });
 
   const submitJobApplicationForm: SubmitEventHandler = (e) => {
     e.preventDefault();
     const jobApplicationData = serializeFormData(new FormData(e.target));
-    console.log(jobApplicationData);
-    // createJobApplicationMutation.mutate(jobApplicationData);
+    createJobApplicationMutation.mutate(jobApplicationData as Record<string, unknown>);
   };
 
   return (
@@ -19,17 +26,22 @@ const JobApplicationsNew = () => {
       <form onSubmit={submitJobApplicationForm}>
         <label>
           <span>Role title:</span>
-          <input name="jobApplication[roleTitle]" autoComplete="off" />
+          <input name="roleTitle" autoComplete="off" />
+        </label>
+
+        <label>
+          <span>Listing url:</span>
+          <input name="listingUrl" autoComplete="off" />
         </label>
 
         <label>
           <span>Company name:</span>
-          <input name="jobApplication[companyAttributes][name]" autoComplete="off" />
+          <input name="companyAttributes[name]" autoComplete="off" />
         </label>
 
         <label>
           <span>Company website url:</span>
-          <input name="jobApplication[companyAttributes][websiteUrl]" autoComplete="off" />
+          <input name="companyAttributes[websiteUrl]" autoComplete="off" />
         </label>
 
         <button type="submit" className="btn btn-primary">
