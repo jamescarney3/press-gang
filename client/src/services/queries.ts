@@ -1,6 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { getSession, createSession, getJobApplications, getCompanies, createJobApplication } from '~/services/api';
+import {
+  getSession,
+  createSession,
+  getJobApplications,
+  getJobApplication,
+  createJobApplication,
+  getCompanies,
+} from '~/services/api';
+import type { JobApplication } from '~/types';
 
 export const useGetSession = () => {
   return useQuery({
@@ -25,11 +33,23 @@ export const useGetJobApplications = () => {
   });
 };
 
-export const useCreateJobApplication = () => {
+export const useGetJobApplication = (id: string) => {
+  return useQuery({
+    queryKey: ['job-application'],
+    queryFn: () => getJobApplication(id),
+  });
+};
+
+export const useCreateJobApplication = ({
+  onSuccess,
+}: { onSuccess?: (jobApplication: JobApplication) => void } = {}) => {
   const client = useQueryClient();
   return useMutation({
-    mutationFn: (jobApplicationData) => createJobApplication(jobApplicationData),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['job-applications', 'companies'] }),
+    mutationFn: (jobApplicationData: Record<string, unknown>) => createJobApplication(jobApplicationData),
+    onSuccess: (jobApplication: JobApplication) => {
+      client.invalidateQueries({ queryKey: ['job-applications', 'companies'] });
+      onSuccess?.(jobApplication);
+    },
   });
 };
 

@@ -49,6 +49,10 @@ export const getJobApplications = async () => {
   return await apiFetch('job_applications');
 };
 
+export const getJobApplication = async (id: string) => {
+  return await apiFetch(['job_applications', id].join('/'));
+};
+
 export const createJobApplication = async (jobApplication: unknown) => {
   return await apiFetch('job_applications', { method: HTTP_METHODS.POST, body: JSON.stringify({ jobApplication }) });
 };
