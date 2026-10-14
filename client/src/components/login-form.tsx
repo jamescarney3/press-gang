@@ -19,7 +19,9 @@ const LoginForm = (props: LoginFormProps) => {
         <input name="password" />
       </label>
       <br />
-      <button type="submit">Log in</button>
+      <button type="submit" className="btn btn-primary">
+        Log in
+      </button>
     </form>
   );
 };

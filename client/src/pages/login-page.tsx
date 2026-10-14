@@ -20,7 +20,12 @@ const LoginPage = () => {
   if (sessionQuery.isPending) return 'Pending...';
   if (sessionQuery.error) return 'Error: ' + sessionQuery.error.message;
   if (sessionQuery.data) return <Navigate to="/" />;
-  return <LoginForm onSubmit={onSubmitLoginForm} />;
+  return (
+    <section>
+      <h1>Log in</h1>
+      <LoginForm onSubmit={onSubmitLoginForm} />
+    </section>
+  );
 };
 
 export default LoginPage;
