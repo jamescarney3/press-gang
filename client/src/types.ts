@@ -12,8 +12,10 @@ export interface JobApplication {
   companyId: number;
   roleTitle: string;
   listingUrl: string;
+  status: 'applied' | 'rejected' | 'stale' | 'in_progress' | 'offered' | 'declined';
   createdAt: string;
   updatedAt: string;
+  company: Company;
 }
 
 export interface Company {
