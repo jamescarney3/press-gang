@@ -30,10 +30,22 @@ module Api
         render json: @job_application
       end
 
+      def update
+        @job_application = JobApplication.find(params[:id])
+
+        authorize @job_application
+
+        @job_application.update(job_application_params);
+
+        render json: @job_application.as_json(include: {
+          company: { only: [:name, :website_url] }
+        }, methods: [:applied_date])
+      end
+
       private
 
       def job_application_params
-        params.require(:job_application).permit(:role_title, :listing_url, company_attributes: [:name, :website_url])
+        params.require(:job_application).permit(:role_title, :listing_url, :status, company_attributes: [:name, :website_url])
       end
     end
   end

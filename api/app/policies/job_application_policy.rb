@@ -9,6 +9,10 @@ class JobApplicationPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def update?
+    record.user == user
+  end
+
   def index_scope
     record.where(user: Current.user)
   end
