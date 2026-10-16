@@ -9,9 +9,9 @@ import type { JobApplication } from '~/types';
 const JobApplicationsShowPage = () => {
   const { id } = useParams();
 
-  const { isPending, isError, data: jobApplication } = useGetJobApplication(id);
+  const { isPending, isError, data: jobApplication } = useGetJobApplication(id!);
 
-  const updateJobApplicationMutation = useUpdateJobApplication(id);
+  const updateJobApplicationMutation = useUpdateJobApplication(id!);
 
   const updateJobApplicationStatus = (status: JobApplication['status']) => {
     updateJobApplicationMutation.mutate({ status } as Record<string, unknown>);

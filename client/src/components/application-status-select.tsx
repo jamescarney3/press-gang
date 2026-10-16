@@ -1,15 +1,16 @@
 import type { ReactNode } from 'react';
+import type { JobApplication } from '~/types';
 
 interface ApplicationStatusSelectProps {
   value?: string | number;
-  onChange?: (value: string | number) => void;
+  onChange?: (value: JobApplication['status']) => void;
   children?: ReactNode;
 }
 
 const ApplicationStatusSelect = ({ onChange }: ApplicationStatusSelectProps) => {
   return (
     <form>
-      <select onChange={(e) => onChange(e.target.value)} value="">
+      <select onChange={(e) => onChange?.(e.target.value as JobApplication['status'])} value="">
         <option value="">Update status</option>
         <option value="applied">applied</option>
         <option value="in_progress">in progress</option>

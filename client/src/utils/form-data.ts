@@ -1,5 +1,9 @@
-type JsonNode = string | number | JsonTree[] | JsonTree;
-type JsonTree = { [key: string]: JsonNode } | JsonNode[];
+export type JsonValue = string | number | JsonValue[] | JsonObject;
+export interface JsonObject {
+  [key: string]: JsonValue;
+}
+
+type JsonTree = JsonObject | JsonValue[];
 
 const assignAtPath = (operand: JsonTree, path: string[], value: string | number): JsonTree => {
   if (!path.length) throw new Error(`Invalid assignment path: ${path}`);
@@ -14,7 +18,7 @@ const assignAtPath = (operand: JsonTree, path: string[], value: string | number)
   if (segmentIsKeyForLeafNode && !operandIsArray) {
     if (segmentIsKeyForArrayNode) {
       const arrayTarget = operand[segment] || ([] as JsonTree[]);
-      return { ...operand, [segment]: [...(arrayTarget as JsonNode[]), value] };
+      return { ...operand, [segment]: [...(arrayTarget as JsonValue[]), value] };
     }
     return { ...operand, [segment]: value } as typeof operand;
   }
@@ -52,12 +56,12 @@ const assignAtPath = (operand: JsonTree, path: string[], value: string | number)
   return { ...operand, [segment]: assignAtPath(target, pathRemainder, value) };
 };
 
-export const serializeFormData = (formData: FormData) => {
+export const serializeFormData = (formData: FormData): JsonObject => {
   const keyMatcher = /^\w+|(?<=.+\[)\w+(?=\])|(?<=\[)(?=\])/g;
   const propEntries = Array.from(formData.entries());
 
   return propEntries.reduce((current, [k, v]) => {
     const path = k.match(keyMatcher)!;
     return assignAtPath(current, path, v as string | number);
-  }, {} as JsonTree);
+  }, {} as JsonTree) as JsonObject;
 };
