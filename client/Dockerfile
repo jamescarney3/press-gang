@@ -1,8 +1,8 @@
 FROM node:23
 
 # copy files and set working directory
-ADD . /usr/src/my_app_client
-WORKDIR /usr/src/my_app_client
+ADD . /usr/src/press_gang_client
+WORKDIR /usr/src/press_gang_client
 
 # install pnpm and app dependencies
 RUN npm install -g pnpm

@@ -1,8 +1,8 @@
 FROM ruby:3.3 AS base
 
 # copy files and set working directory
-ADD . /usr/src/my_app_api
-WORKDIR /usr/src/my_app_api
+ADD . /usr/src/press_gang_api
+WORKDIR /usr/src/press_gang_api
 
 # install application dependencies
 # TODO: don't install dev and test deps when running in production?

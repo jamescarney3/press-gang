@@ -1,4 +1,4 @@
-name: my_app
+name: press_gang
 
 services:
   api:
@@ -10,15 +10,15 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./api:/usr/src/my_app_api
+      - ./api:/usr/src/press_gang_api
     environment:
       # rails configs
       RAILS_ENV: development
       POSTGRES_HOST: db
       # DB configs
-      POSTGRES_DB: my_app_db
-      POSTGRES_USER: my_app_db_user
-      POSTGRES_PASSWORD: my_app_db_password_dev!
+      POSTGRES_DB: press_gang_db
+      POSTGRES_USER: press_gang_db_user
+      POSTGRES_PASSWORD: press_gang_db_password_dev!
       # CORS
       CLIENT_ORIGIN: http://localhost:5173
   client:
@@ -26,7 +26,7 @@ services:
     ports:
       - '5173:5173'
     volumes:
-      - ./client:/usr/src/my_app_client
+      - ./client:/usr/src/press_gang_client
   db:
     image: postgres
     volumes:
@@ -34,9 +34,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_DB: my_app_db
-      POSTGRES_USER: my_app_db_user
-      POSTGRES_PASSWORD: my_app_db_password_dev!
+      POSTGRES_DB: press_gang_db
+      POSTGRES_USER: press_gang_db_user
+      POSTGRES_PASSWORD: press_gang_db_password_dev!
 
 volumes:
   postgres:

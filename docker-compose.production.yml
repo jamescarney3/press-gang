@@ -1,4 +1,4 @@
-name: my_app_production
+name: press_gang_production
 
 services:
   api:
@@ -10,6 +10,7 @@ services:
     environment:
       # rails configs
       RAILS_ENV: production
+      POSTGRES_HOST: db
       # DB configs
       POSTGRES_DB: ${POSTGRES_DB:?error}
       POSTGRES_USER: ${POSTGRES_USER:?error}
