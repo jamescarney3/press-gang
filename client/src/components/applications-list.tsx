@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import ApplicationStatusChip from '~/components/application-status-chip';
 import type { JobApplication, Company } from '~/types';
 import styles from '~/styles/components/applications-list.module.css';
 
@@ -12,6 +13,9 @@ const renderApplication = (jobApplication: JobApplication & { company: Company }
     <li className={styles.applicationsListItem}>
       <span>{jobApplication.company?.name}</span>
       <span>{jobApplication.roleTitle}</span>
+      <span>
+        <ApplicationStatusChip status={jobApplication.status} />
+      </span>
     </li>
   </Link>
 );
