@@ -1,3 +1,4 @@
+import PageContainer from '~/components/page-container';
 import ApplicationsList from '~/components/applications-list';
 import { useGetJobApplications, useGetCompanies } from '~/services/queries';
 import type { JobApplication, Company } from '~/types';
@@ -28,10 +29,10 @@ const HomePage = () => {
   if (isPending) return <div>loading</div>;
   if (isError) return <div>page error</div>;
   return (
-    <section>
+    <PageContainer>
       <h1>Job Applications</h1>
       <ApplicationsList jobApplications={data} />
-    </section>
+    </PageContainer>
   );
 };
 
