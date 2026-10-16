@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class JobApplication < ApplicationRecord
+  enum :status, [:applied, :rejected, :stale, :in_progress, :offered, :declined], prefix: true
+
   belongs_to :user
   belongs_to :company
 
