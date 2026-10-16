@@ -6,6 +6,7 @@ import {
   getJobApplications,
   getJobApplication,
   createJobApplication,
+  updateJobApplication,
   getCompanies,
 } from '~/services/api';
 import type { JobApplication } from '~/types';
@@ -35,7 +36,7 @@ export const useGetJobApplications = () => {
 
 export const useGetJobApplication = (id: string) => {
   return useQuery({
-    queryKey: ['job-application'],
+    queryKey: ['job-application', id],
     queryFn: () => getJobApplication(id),
   });
 };
@@ -47,7 +48,21 @@ export const useCreateJobApplication = ({
   return useMutation({
     mutationFn: (jobApplicationData: Record<string, unknown>) => createJobApplication(jobApplicationData),
     onSuccess: (jobApplication: JobApplication) => {
-      client.invalidateQueries({ queryKey: ['job-applications', 'companies'] });
+      client.invalidateQueries({ queryKey: ['job-applications'] });
+      onSuccess?.(jobApplication);
+    },
+  });
+};
+
+export const useUpdateJobApplication = (
+  id: string,
+  { onSuccess }: { onSuccess?: (jobApplication: JobApplication) => void } = {},
+) => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (jobApplicationData: Record<string, unknown>) => updateJobApplication(id, jobApplicationData),
+    onSuccess: (jobApplication: JobApplication) => {
+      client.invalidateQueries({ queryKey: ['job-application', id] });
       onSuccess?.(jobApplication);
     },
   });

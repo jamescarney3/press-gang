@@ -4,6 +4,8 @@ const API_ROOT = 'http://localhost:3000/api/v1';
 const HTTP_METHODS = {
   POST: 'POST',
   DELETE: 'DELETE',
+  PUT: 'PUT',
+  PATCH: 'PATCH',
 };
 
 type PropertyOf<T> = T[keyof T];
@@ -55,6 +57,13 @@ export const getJobApplication = async (id: string) => {
 
 export const createJobApplication = async (jobApplication: unknown) => {
   return await apiFetch('job_applications', { method: HTTP_METHODS.POST, body: JSON.stringify({ jobApplication }) });
+};
+
+export const updateJobApplication = async (id: string, jobApplication: Record<string, unknown>) => {
+  return await apiFetch(['job_applications', id].join('/'), {
+    method: HTTP_METHODS.PATCH,
+    body: JSON.stringify({ jobApplication }),
+  });
 };
 
 /**** COMPANIES ****/
