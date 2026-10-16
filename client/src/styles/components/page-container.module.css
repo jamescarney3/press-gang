@@ -1,0 +1,8 @@
+.container {
+  margin: var(--spacing-0) var(--spacing-0);
+
+  @media (min-width: 1280px) {
+    margin: var(--spacing-0) auto;
+    width: var(--width-page-base);
+  }
+}

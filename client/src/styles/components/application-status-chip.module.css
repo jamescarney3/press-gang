@@ -1,0 +1,41 @@
+.chip {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  border-width: 1px;
+  border-style: solid;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  margin: var(--spacing-1);
+}
+
+.applied {
+  background-color: var(--color-info-300);
+  color: var(--color-info-700);
+  border-color: var(--color-info-800);
+}
+
+.rejected {
+  background-color: var(--color-danger-300);
+  color: var(--color-danger-700);
+  border-color: var(--color-danger-800);
+}
+
+.stale,
+.declined {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-700);
+  border-color: var(--color-neutral-800);
+}
+
+.in-progress {
+  background-color: var(--color-warning-300);
+  color: var(--color-warning-700);
+  border-color: var(--color-warning-800);
+}
+
+.offered {
+  background-color: var(--color-success-300);
+  color: var(--color-success-700);
+  border-color: var(--color-success-800);
+}

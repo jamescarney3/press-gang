@@ -67,6 +67,7 @@ button,
   border-radius: var(--radius-control);
   font-family: var(--font-family-heading);
   cursor: pointer;
+  min-height: var(--min-height-form-control);
 }
 
 .btn-primary {
@@ -93,11 +94,16 @@ form {
     margin: var(--spacing-1) var(--spacing-0);
   }
 
-  input {
+  input,
+  select {
+    vertical-align: top;
     border-radius: var(--radius-control);
     border-style: solid;
+    border-width: var(--border-width-control);
     display: block;
     width: var(--spacing-64);
+    padding: var(--spacing-1) var(--spacing-2);
+    min-height: var(--min-height-form-control);
 
     &:focus-visible {
       outline-color: var(--color-ring);
