@@ -10,11 +10,20 @@ services:
     environment:
       # rails configs
       RAILS_ENV: production
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY:?error}
       POSTGRES_HOST: db
       # DB configs
       POSTGRES_DB: ${POSTGRES_DB:?error}
       POSTGRES_USER: ${POSTGRES_USER:?error}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?error}
+  client:
+    extends:
+      file: docker-compose.yml
+      service: client
+    build:
+      target: production
+    environment:
+      CLIENT_PORT: ${CLIENT_PORT:?error}
   db:
     extends:
       file: docker-compose.yml

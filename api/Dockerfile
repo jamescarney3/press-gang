@@ -16,6 +16,10 @@ ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV RAILS_LOG_TO_STDOUT=true
 
+# copy master key into unchecked config/master.key file so rails can decrypt
+# contents of config/credentials.yml.enc
+RUN echo $RAILS_MASTER_KEY > config/master.key
+
 # specify 0.0.0.0 as IP address here so the server listens on all available
 # network interfaces and is accessible from outside of this container
 CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
