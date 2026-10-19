@@ -10,6 +10,9 @@ RUN pnpm i --force
 
 FROM base AS production-build
 
+ARG VITE_DOMAIN_NAME
+ENV VITE_DOMAIN_NAME=$VITE_DOMAIN_NAME
+
 RUN pnpm build
 
 FROM nginx:alpine AS production
