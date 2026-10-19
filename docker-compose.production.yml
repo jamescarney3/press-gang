@@ -26,7 +26,7 @@ services:
       target: production
       args:
         # for client api service
-        VITE_DOMAIN_NAME: ${VITE_DOMAIN_NAME:?error}
+        VITE_API_HOST: ${VITE_API_HOST:?error}
     environment:
       # production only config - interpolated into nginx conf to serve build artifacts
       CLIENT_PORT: ${CLIENT_PORT:?error}

@@ -1,4 +1,4 @@
-const API_ROOT = 'http://' + import.meta.env.VITE_DOMAIN_NAME + '/api/v1';
+const API_ROOT = import.meta.env.VITE_API_HOST + '/api/v1';
 
 const HTTP_METHODS = {
   POST: 'POST',
