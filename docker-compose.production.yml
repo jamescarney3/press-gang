@@ -16,6 +16,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:?error}
       POSTGRES_USER: ${POSTGRES_USER:?error}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?error}
+      # cors
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:?error}
   client:
     extends:
       file: docker-compose.yml
@@ -23,6 +25,9 @@ services:
     build:
       target: production
     environment:
+      # for client api service
+      VITE_DOMAIN_NAME: ${VITE_DOMAIN_NAME:?error}
+      # production only config - interpolated into nginx conf to serve build artifacts
       CLIENT_PORT: ${CLIENT_PORT:?error}
   db:
     extends:

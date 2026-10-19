@@ -21,7 +21,7 @@ RUN chmod -R 755 /usr/share/nginx/html # TODO: confirm how necessary this is
 # copy nginx configuration from source to production stage and replace client port
 # var from env
 COPY nginx.conf nginx.conf
-RUN envsubst '$CLIENT_PORT' < nginx.conf > /etc/nginx/conf.d/default.conf
+RUN envsubst '\$CLIENT_PORT' < nginx.conf > /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
 

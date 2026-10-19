@@ -27,6 +27,9 @@ services:
       - '5173:5173'
     volumes:
       - ./client:/usr/src/press_gang_client
+    environment:
+      # for client api service
+      VITE_DOMAIN_NAME: localhost:3000
   db:
     image: postgres
     volumes:

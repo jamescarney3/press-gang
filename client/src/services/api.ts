@@ -1,5 +1,4 @@
-// TODO: environmentalize this
-const API_ROOT = 'http://localhost:3000/api/v1';
+const API_ROOT = 'http://' + import.meta.env.VITE_DOMAIN_NAME + '/api/v1';
 
 const HTTP_METHODS = {
   POST: 'POST',
