@@ -24,12 +24,8 @@ export default defineConfig([
     },
     settings: {
       'import/resolver': {
-        alias: {
-          map: [
-            ['~', path.resolve(import.meta.dirname, './src')],
-            ['test', path.resolve(import.meta.dirname, './test')],
-          ],
-          extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
+        typescript: {
+          project: './tsconfig.app.json',
         },
       },
     },
@@ -38,12 +34,13 @@ export default defineConfig([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       semi: ['warn'],
       quotes: ['warn', 'single', { avoidEscape: true }],
-      'import/order': [
-        'error',
-        {
-          groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
-        },
-      ],
+      // hopefully someday the import/order rule will work with eslint v10+...
+      // 'import/order': [
+      //   'error',
+      //   {
+      //     groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
+      //   },
+      // ],
       'import/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
     },
   },
