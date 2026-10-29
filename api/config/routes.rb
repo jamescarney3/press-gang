@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resource :session, only: %i[create destroy show]
       resources :job_applications, only: %i[index show create update]
       resources :companies, only: %i[index]
+      resources :comments, only: %i[index create destroy]
     end
   end
 end

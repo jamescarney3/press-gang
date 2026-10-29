@@ -58,7 +58,8 @@ if Rails.env.development?
     companies.each do |c|
       JobApplication.find_or_create_by(user: u, company: c) do |ja|
         ja.role_title = titles.shift
-        ja.listing_url = c.website_url + '/jobs/' + ja.role_title.gsub(/\s+/, "")
+        ja.listing_url = "#{c.website_url}/jobs/#{ja.role_title.gsub(/\s+/, '')}"
+        u.comments.create(text: 'generic comment', commentable: ja)
       end
     end
   end

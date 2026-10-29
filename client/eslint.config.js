@@ -5,7 +5,7 @@ import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
-import importPlugin from 'eslint-plugin-import';
+import importX from 'eslint-plugin-import-x';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
@@ -17,15 +17,20 @@ export default defineConfig([
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
-      importPlugin.flatConfigs.recommended,
+      importX.flatConfigs.recommended,
+      importX.flatConfigs.typescript,
     ],
     languageOptions: {
       globals: globals.browser,
     },
     settings: {
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.app.json',
+      'import-x/resolver': {
+        alias: {
+          map: [
+            ['~', path.resolve(import.meta.dirname, './src')],
+            ['test', path.resolve(import.meta.dirname, './test')],
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
         },
       },
     },
@@ -34,14 +39,13 @@ export default defineConfig([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       semi: ['warn'],
       quotes: ['warn', 'single', { avoidEscape: true }],
-      // hopefully someday the import/order rule will work with eslint v10+...
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
-      //   },
-      // ],
-      'import/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
+      'import-x/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
+        },
+      ],
+      'import-x/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
     },
   },
 ]);

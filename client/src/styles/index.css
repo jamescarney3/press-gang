@@ -80,6 +80,11 @@ button,
   }
 }
 
+.btn-unstyled {
+  background: none;
+  border: none;
+}
+
 /********************************/
 /* FORMS                        */
 /********************************/
@@ -95,6 +100,7 @@ form {
   }
 
   input,
+  textarea,
   select {
     vertical-align: top;
     border-radius: var(--radius-control);
@@ -108,6 +114,10 @@ form {
     &:focus-visible {
       outline-color: var(--color-ring);
     }
+  }
+
+  textarea {
+    width: var(--spacing-96);
   }
 
   button {
