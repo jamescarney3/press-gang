@@ -4,14 +4,17 @@ import { useGetJobApplication, useUpdateJobApplication } from '~/services/querie
 import PageContainer from '~/components/page-container';
 import ApplicationStatusSelect from '~/components/application-status-select';
 import ApplicationHeading from '~/components/application-heading';
-import type { JobApplication } from '~/types';
+import ApplicationComment from '~/components/application-comment';
+import ApplicationCommentForm from '~/components/application-comment-form';
+import { sortCommentsDescending } from '~/utils/sorting';
+import type { JobApplication, Comment } from '~/types';
 
 const JobApplicationsShowPage = () => {
   const { id } = useParams();
 
-  const { isPending, isError, data: jobApplication } = useGetJobApplication(id!);
+  const { isPending, isError, data: jobApplication } = useGetJobApplication(Number(id));
 
-  const updateJobApplicationMutation = useUpdateJobApplication(id!);
+  const updateJobApplicationMutation = useUpdateJobApplication(Number(id));
 
   const updateJobApplicationStatus = (status: JobApplication['status']) => {
     updateJobApplicationMutation.mutate({ status } as Record<string, unknown>);
@@ -25,6 +28,12 @@ const JobApplicationsShowPage = () => {
       <section>
         <ApplicationStatusSelect onChange={(value: JobApplication['status']) => updateJobApplicationStatus(value)} />
         <div>Applied {jobApplication.appliedDate}</div>
+      </section>
+      <section>
+        <ApplicationCommentForm commentableId={jobApplication.id} />
+        {sortCommentsDescending(jobApplication.comments).map((comment: Comment) => (
+          <ApplicationComment application={jobApplication} comment={comment} key={`comment-${comment.id}`} />
+        ))}
       </section>
     </PageContainer>
   );
