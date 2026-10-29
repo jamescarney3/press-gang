@@ -25,6 +25,11 @@ const JobApplicationsNew = () => {
       <h1>Create Job Application</h1>
       <form onSubmit={submitJobApplicationForm}>
         <label>
+          <span>Company name:</span>
+          <input name="companyAttributes[name]" autoComplete="off" />
+        </label>
+
+        <label>
           <span>Role title:</span>
           <input name="roleTitle" autoComplete="off" />
         </label>
@@ -32,11 +37,6 @@ const JobApplicationsNew = () => {
         <label>
           <span>Listing url:</span>
           <input name="listingUrl" autoComplete="off" />
-        </label>
-
-        <label>
-          <span>Company name:</span>
-          <input name="companyAttributes[name]" autoComplete="off" />
         </label>
 
         <label>
