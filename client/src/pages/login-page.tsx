@@ -1,7 +1,7 @@
-import { useCreateSession, useGetSession } from '~/services/queries';
-import { Navigate } from 'react-router-dom';
 import type { SubmitEventHandler } from 'react';
+import { Navigate } from 'react-router-dom';
 
+import { useCreateSession, useGetSession } from '~/services/queries';
 import LoginForm from '~/components/login-form';
 
 const LoginPage = () => {
