@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class JobApplication < ApplicationRecord
-  enum :status, [:applied, :rejected, :stale, :in_progress, :offered, :declined], prefix: true
+  include Commentable
+
+  enum :status, %i[applied rejected stale in_progress offered declined], prefix: true
 
   belongs_to :user
   belongs_to :company
@@ -9,6 +11,6 @@ class JobApplication < ApplicationRecord
   accepts_nested_attributes_for :company
 
   def applied_date
-    created_at.strftime("%F")
+    created_at.strftime('%F')
   end
 end
