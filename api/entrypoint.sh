@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# # use environment variables from copied production .env file
-# source .env
-
 # remove a potentially pre-existing server.pid for Rails.
 rm -f tmp/pids/server.pid
 
