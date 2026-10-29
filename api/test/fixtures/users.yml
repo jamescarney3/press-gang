@@ -3,7 +3,7 @@
 
 main:
   email_address: ned.ludd@earthlink.com
-  password: <% main_password_digest %>
+  password_digest: <%= main_password_digest %>
 
 one:
   email_address: one@example.com

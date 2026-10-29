@@ -14,5 +14,9 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def sign_in_main_user
+      post api_v1_session_path,
+           params: { credentials: { email_address: users(:main).email_address, password: 'password' } }
+    end
   end
 end

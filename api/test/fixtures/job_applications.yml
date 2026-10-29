@@ -6,10 +6,12 @@
 #
 one:
   role_title: Yak Shaver
+  listing_url: https://example.com/jobs/yak-shaver
   company: foo_corp
   user: main
 
 two:
   role_title: Bike Shed Architect
+  listing_url: https://example.com/jobs/bike-shed-architect
   company: bar_corp
   user: main
