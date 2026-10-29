@@ -25,3 +25,12 @@ export interface Company {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Comment {
+  id: number;
+  createdAt: string;
+  createdAtYmd: string;
+  text: string;
+  userId: number;
+  commentableId: number;
+}
