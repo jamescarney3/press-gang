@@ -10,11 +10,11 @@ interface CommentFormProps {
 const ApplicationCommentForm = (props: CommentFormProps) => {
   const { commentableId } = props;
 
-  const textControlRef = useRef(null);
+  const textControlRef = useRef<HTMLTextAreaElement>(null);
 
   const resetTextControl = () => {
     const textControl = textControlRef.current;
-    textControl.value = '';
+    textControl!.value = '';
   };
 
   const createCommentMutation = useCreateJobApplicationComment(commentableId, { onSuccess: resetTextControl });
