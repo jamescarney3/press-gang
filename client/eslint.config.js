@@ -5,7 +5,7 @@ import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
-import importPlugin from 'eslint-plugin-import';
+import importX from 'eslint-plugin-import-x';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
@@ -17,19 +17,14 @@ export default defineConfig([
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
-      importPlugin.flatConfigs.recommended,
+      importX.flatConfigs.recommended,
+      importX.flatConfigs.typescript,
     ],
     languageOptions: {
       globals: globals.browser,
     },
     settings: {
-      'import/resolver': {
-        // typescript: {
-        //   alwaysTryTypes: true,
-        //   project: path.resolve(import.meta.dirname, './tsconfig.app.json'),
-        // },
-        // workingDirectories: [{ directory: '.' }],
-        typescript: true,
+      'import-x/resolver': {
         alias: {
           map: [
             ['~', path.resolve(import.meta.dirname, './src')],
@@ -44,17 +39,13 @@ export default defineConfig([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       semi: ['warn'],
       quotes: ['warn', 'single', { avoidEscape: true }],
-      // NB: hopefully someday the import/order rule will work with eslint v10+...
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
-      //   },
-      // ],
-      'import/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
-
-      // NB: temporary measure until gram sorts out import aliases or
-      'import/no-unresolved': ['off'],
+      'import-x/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'sibling', 'parent', 'index'],
+        },
+      ],
+      'import-x/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
     },
   },
 ]);
