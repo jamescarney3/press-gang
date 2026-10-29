@@ -24,8 +24,18 @@ export default defineConfig([
     },
     settings: {
       'import/resolver': {
-        typescript: {
-          project: './tsconfig.app.json',
+        // typescript: {
+        //   alwaysTryTypes: true,
+        //   project: path.resolve(import.meta.dirname, './tsconfig.app.json'),
+        // },
+        // workingDirectories: [{ directory: '.' }],
+        typescript: true,
+        alias: {
+          map: [
+            ['~', path.resolve(import.meta.dirname, './src')],
+            ['test', path.resolve(import.meta.dirname, './test')],
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
         },
       },
     },
@@ -34,7 +44,7 @@ export default defineConfig([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       semi: ['warn'],
       quotes: ['warn', 'single', { avoidEscape: true }],
-      // hopefully someday the import/order rule will work with eslint v10+...
+      // NB: hopefully someday the import/order rule will work with eslint v10+...
       // 'import/order': [
       //   'error',
       //   {
@@ -42,6 +52,9 @@ export default defineConfig([
       //   },
       // ],
       'import/newline-after-import': ['error', { count: 1, exactCount: true, considerComments: true }],
+
+      // NB: temporary measure until gram sorts out import aliases or
+      'import/no-unresolved': ['off'],
     },
   },
 ]);
