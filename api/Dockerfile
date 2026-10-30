@@ -28,7 +28,10 @@ CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
 # exists and is prepared, clean up any existing pids,
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+
+# this image will try to execute the entrypoint script with dash by default; ensure it executes
+# with bash instead so that it supports string substitution
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
 
 
 FROM base AS development
