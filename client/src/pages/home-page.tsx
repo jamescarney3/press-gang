@@ -30,7 +30,7 @@ const HomePage = () => {
   if (isError) return <div>page error</div>;
   return (
     <PageContainer>
-      <h1>Job Applications</h1>
+      <h1>Applications</h1>
       <ApplicationsList jobApplications={data} />
     </PageContainer>
   );
