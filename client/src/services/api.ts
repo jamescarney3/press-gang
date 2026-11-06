@@ -87,6 +87,11 @@ export const deleteComment = async (id: number) => {
   return await apiFetch(['/comments', id].join('/'), { method: HTTP_METHODS.DELETE });
 };
 
+/**** QUESTIONS ****/
+export const createQuestion = async (question: { jobApplicationId: number; prompt: string; answer: string }) => {
+  return await apiFetch('/questions', { method: HTTP_METHODS.POST, body: JSON.stringify({ question }) });
+};
+
 /**** COMPANIES ****/
 export const getCompanies = async () => {
   return await apiFetch('/companies');
