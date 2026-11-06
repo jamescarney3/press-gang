@@ -15,7 +15,9 @@ module Api
 
         render json: @job_application.as_json(include: {
                                                 company: { only: %i[name website_url] },
-                                                comments: { only: %i[id text created_at], methods: [:created_at_ymd] }
+                                                comments: { only: %i[id text created_at], methods: [:created_at_ymd] },
+                                                questions: { only: %i[id prompt answer created_at],
+                                                             methods: [:created_at_ymd] }
                                               }, methods: [:applied_date])
       end
 

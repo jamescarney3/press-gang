@@ -10,6 +10,7 @@ import {
   getComments,
   createComment,
   deleteComment,
+  createQuestion,
   getCompanies,
 } from '~/services/api';
 import type { JobApplication } from '~/types';
@@ -100,6 +101,21 @@ export const useCreateJobApplicationComment = (
     mutationFn: (comment: { text: string }) => createComment({ commentableId, commentableType, ...comment }),
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['job-application', commentableId] });
+      onSuccess?.();
+    },
+  });
+};
+
+/**** QUESTIONS ****/
+export const useCreateJobApplicationQuestion = (
+  jobApplicationId: number,
+  { onSuccess }: { onSuccess?: () => void } = {},
+) => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (question: { prompt: string; answer: string }) => createQuestion({ jobApplicationId, ...question }),
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['job-application', jobApplicationId] });
       onSuccess?.();
     },
   });
