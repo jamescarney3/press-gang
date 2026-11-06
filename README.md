@@ -24,8 +24,13 @@ docker compose build
 docker compose up
 ```
 
-# Usage
-This project is intented as a starting point for a Ruby on Rails application connected to a Postgres database. Configurations and default behavior are minimal, reasonable, and extensible.
+# API Service
+
+## Testing
+Run tests with docker compose:
+```
+docker compose run --rm --remove-orphans api bundle exec rails test [filespec(s)]
+```
 
 # DB Operations
 Dump database with the following command:
