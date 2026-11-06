@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_30_101314) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_04_192827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -44,6 +44,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_30_101314) do
     t.index ["user_id"], name: "index_job_applications_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.bigint "job_application_id", null: false
+    t.text "prompt"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["job_application_id"], name: "index_questions_on_job_application_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
@@ -68,5 +79,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_30_101314) do
   add_foreign_key "comments", "users"
   add_foreign_key "job_applications", "companies"
   add_foreign_key "job_applications", "users"
+  add_foreign_key "questions", "job_applications"
+  add_foreign_key "questions", "users"
   add_foreign_key "sessions", "users"
 end
