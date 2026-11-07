@@ -1,0 +1,30 @@
+.question {
+  position: relative;
+  border-radius: var(--border-radius-base);
+  background-color: var(--color-bg-subtle);
+  padding-top: var(--spacing-8);
+  margin: var(--spacing-2) var(--spacing-0);
+}
+
+.question-button {
+  position: absolute;
+  padding: var(--spacing-2);
+  top: 0;
+  right: 0;
+}
+
+.question-date {
+  position: absolute;
+  padding: var(--spacing-2);
+  top: 0;
+  left: 0;
+}
+
+.question-heading {
+  padding: 0 var(--spacing-2);
+}
+
+.question-prompt,
+.question-answer {
+  padding: var(--spacing-2);
+}

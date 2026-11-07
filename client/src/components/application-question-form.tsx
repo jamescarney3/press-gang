@@ -3,35 +3,55 @@ import type { SubmitEventHandler } from 'react';
 
 import { useCreateJobApplicationQuestion } from '~/services/queries';
 
+import styles from '~/styles/components/application-question-form.module.css';
+
 interface QuestionFormProps {
-  commentableId: number;
+  jobApplicationId: number;
 }
 
 const ApplicationQuestionForm = (props: QuestionFormProps) => {
-  const { commentableId } = props;
+  const { jobApplicationId } = props;
 
-  const textControlRef = useRef<HTMLTextAreaElement>(null);
+  const promptTextControlRef = useRef<HTMLTextAreaElement>(null);
+  const answerTextControlRef = useRef<HTMLTextAreaElement>(null);
 
   const resetTextControl = () => {
-    const textControl = textControlRef.current;
-    textControl!.value = '';
+    const promptTextControl = promptTextControlRef.current;
+    const answerTextControl = answerTextControlRef.current;
+    promptTextControl!.value = '';
+    answerTextControl!.value = '';
   };
 
-  const createCommentMutation = useCreateJobApplicationQuestion(commentableId, { onSuccess: resetTextControl });
+  const createCommentMutation = useCreateJobApplicationQuestion(jobApplicationId, { onSuccess: resetTextControl });
 
   const submitForm: SubmitEventHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const prompt = formData.get('text') as string;
-    const answer = formData.get('text') as string;
+    const prompt = formData.get('prompt') as string;
+    const answer = formData.get('answer') as string;
     createCommentMutation.mutate({ prompt, answer });
   };
 
   return (
     <form onSubmit={submitForm}>
       <h2>New question</h2>
-      <textarea ref={textControlRef} name="prompt" rows={5}></textarea>
-      <textarea ref={textControlRef} name="answer" rows={5}></textarea>
+      <textarea
+        ref={promptTextControlRef}
+        name="prompt"
+        placeholder="Prompt"
+        rows={1}
+        className={styles.promptInput}
+      ></textarea>
+      <label>
+        <span>Answer</span>
+        <textarea
+          ref={answerTextControlRef}
+          name="answer"
+          placeholder="Answer"
+          rows={1}
+          className={styles.answerInput}
+        ></textarea>
+      </label>
       <button type="submit" className="btn btn-primary">
         Submit
       </button>

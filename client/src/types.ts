@@ -16,6 +16,7 @@ export interface JobApplication {
   createdAt: string;
   updatedAt: string;
   company: Company;
+  question: Question;
 }
 
 export interface Company {
@@ -33,4 +34,14 @@ export interface Comment {
   text: string;
   userId: number;
   commentableId: number;
+}
+
+export interface Question {
+  id: number;
+  createdAt: string;
+  createdAtYmd: string;
+  prompt: string;
+  answer: string;
+  jobApplication: JobApplication;
+  user: User;
 }

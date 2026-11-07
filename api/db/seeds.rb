@@ -60,6 +60,9 @@ if Rails.env.development?
         ja.role_title = titles.shift
         ja.listing_url = "#{c.website_url}/jobs/#{ja.role_title.gsub(/\s+/, '')}"
         u.comments.create(text: 'generic comment', commentable: ja)
+        u.questions.create(user: u, job_application: ja, prompt: "generic question about work from #{c.name}",
+                           answer: "generic answer about work that makes a compelling argument to #{c.name}"\
+                                   "for hiring #{u.first_name}")
       end
     end
   end

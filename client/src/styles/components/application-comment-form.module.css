@@ -1,0 +1,10 @@
+.text-input {
+  padding: var(--spacing-2);
+  height: 1rem;
+  transition: height var(--duration-fast) var(--ease-linear);
+  resize: none;
+}
+
+.text-input:focus {
+  height: 10rem;
+}

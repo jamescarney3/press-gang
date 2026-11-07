@@ -42,12 +42,12 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   line-height: var(--line-height-2xl);
   letter-spacing: var(--letter-spacing-xl);
   margin: 0 0 var(--spacing-2);
   @media (max-width: 992px) {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
 }
 

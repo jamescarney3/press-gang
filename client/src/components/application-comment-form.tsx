@@ -3,6 +3,8 @@ import type { SubmitEventHandler } from 'react';
 
 import { useCreateJobApplicationComment } from '~/services/queries';
 
+import styles from '~/styles/components/application-comment-form.module.css';
+
 interface CommentFormProps {
   commentableId: number;
 }
@@ -28,7 +30,7 @@ const ApplicationCommentForm = (props: CommentFormProps) => {
   return (
     <form onSubmit={submitForm}>
       <h2>New comment</h2>
-      <textarea ref={textControlRef} name="text" rows={5}></textarea>
+      <textarea ref={textControlRef} name="text" placeholder="Comment" rows={1} className={styles.textInput}></textarea>
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
