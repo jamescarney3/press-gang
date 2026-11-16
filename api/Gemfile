@@ -7,8 +7,7 @@ gem 'rails', '~> 8.1.3', '>= 8.1.3.1'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'propshaft'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1', group: %i[development production]
-gem 'sqlite3', group: [:test] # unless we're testing!
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
@@ -21,6 +20,12 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # translate between camelCase to/from client and snake_case in Rails
 gem 'olive_branch'
+
+# search
+gem 'pg_search'
+
+# API serialization
+gem 'props_template'
 
 group :development, :test do
   gem 'minitest', '~> 5.20'
