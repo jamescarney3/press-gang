@@ -5,8 +5,13 @@ module Api
     class QuestionsController < Api::V1::ApplicationController
       def index
         @questions = policy_scope Question.where(filter_params)
+        @questions = @questions.search_by_prompt_and_answer(search_param) if search_param.present?
 
-        render json: @questions
+        render json: @questions.as_json(only: %i[prompt answer],
+                                        include: {
+                                          job_application: { only: %i[role_title],
+                                                             include: { company: { only: %i[name] } } }
+                                        })
       end
 
       def create
@@ -36,6 +41,10 @@ module Api
 
       def filter_params
         params.permit(:job_application_id)
+      end
+
+      def search_param
+        params.permit(:search)[:search]
       end
     end
   end
