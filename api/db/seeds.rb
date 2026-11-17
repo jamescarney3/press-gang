@@ -59,8 +59,8 @@ if Rails.env.development?
       JobApplication.find_or_create_by(user: u, company: c) do |ja|
         ja.role_title = titles.shift
         ja.listing_url = "#{c.website_url}/jobs/#{ja.role_title.gsub(/\s+/, '')}"
-        u.comments.create(text: 'generic comment', commentable: ja)
-        u.questions.create(user: u, job_application: ja, prompt: "generic question about work from #{c.name}",
+        u.comments.find_or_create_by(commentable: ja, text: 'generic comment')
+        u.questions.find_or_create_by(job_application: ja, prompt: "generic question about work from #{c.name}",
                            answer: "generic answer about work that makes a compelling argument to #{c.name}"\
                                    "for hiring #{u.first_name}")
       end
