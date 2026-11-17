@@ -6,7 +6,8 @@ services:
     tty: true
     build: api
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - '3000:3000'
     volumes:
@@ -16,7 +17,8 @@ services:
       RAILS_ENV: development
       POSTGRES_HOST: db
       # DB configs
-      POSTGRES_DB: press_gang_db
+      POSTGRES_DB: press_gang_db # must be different from following line!
+      POSTGRES_TEST_DB: press_gang_test # must be different from previous line!
       POSTGRES_USER: press_gang_db_user
       POSTGRES_PASSWORD: press_gang_db_password_dev!
       # CORS
@@ -33,6 +35,11 @@ services:
       VITE_API_HOST: http://localhost:3000
   db:
     image: postgres
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
     volumes:
       - postgres:/var/lib/postgresql
     ports:

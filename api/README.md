@@ -1,24 +1,13 @@
-# README
+# API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running tests
 
-Things you may want to cover:
+The `api` service test suite requires a PostgreSQL connection to run.
 
-* Ruby version
+To run the test suite in the default container, run the `rails test` command in an `api` service container:
 
-* System dependencies
+```sh
+docker compose run --rm api rails test
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The test environment connects to the separate `press_gang_test` database.
