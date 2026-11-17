@@ -7,11 +7,7 @@ module Api
         @questions = policy_scope Question.where(filter_params)
         @questions = @questions.search_by_prompt_and_answer(search_param) if search_param.present?
 
-        render json: @questions.as_json(only: %i[prompt answer],
-                                        include: {
-                                          job_application: { only: %i[role_title],
-                                                             include: { company: { only: %i[name] } } }
-                                        })
+        render :index
       end
 
       def create
@@ -35,16 +31,20 @@ module Api
 
       private
 
+      # POST, PUT, PATCH
       def question_params
         params.require(:question).permit(:answer, :prompt, :job_application_id)
       end
 
+      # GET
       def filter_params
-        params.permit(:job_application_id)
+        filter_keys = [:job_application_id]
+        params.slice(*filter_keys).permit(*filter_keys)
       end
 
+      # GET
       def search_param
-        params.permit(:search)[:search]
+        params.slice(:search).permit(:search)[:search]
       end
     end
   end

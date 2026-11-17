@@ -1,0 +1,15 @@
+json.array! @questions do |question|
+  json.id question.id
+  json.prompt question.prompt
+  json.answer question.answer
+  json.createdAt question.created_at
+  json.updatedAt question.updated_at
+
+  json.job_application do |foo|
+    job_application = question.job_application
+    json.company do
+        company = job_application.company
+        json.name company.name
+    end
+  end
+end
