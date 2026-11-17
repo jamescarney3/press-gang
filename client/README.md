@@ -71,3 +71,11 @@ export default defineConfig([
   },
 ]);
 ```
+
+## Running tests
+
+To run the test suite in the default container, run the test command from the project package file the with `pnpm` in a `client` service container:
+
+```sh
+docker compose run --rm client pnpm test
+```
