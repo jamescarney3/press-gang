@@ -1,3 +1,5 @@
+import { LinearProgress } from '@mui/material';
+
 import PageContainer from '~/components/page-container';
 import ApplicationsList from '~/components/applications-list';
 import { useGetJobApplications, useGetCompanies } from '~/services/queries';
@@ -26,8 +28,15 @@ const useHomePageState = () => {
 const HomePage = () => {
   const { isPending, isError, data } = useHomePageState();
 
-  if (isPending) return <div>loading</div>;
-  if (isError) return <div>page error</div>;
+  if (isError) return <PageContainer>page error</PageContainer>;
+
+  if (isPending)
+    return (
+      <PageContainer>
+        <LinearProgress />
+      </PageContainer>
+    );
+
   return (
     <PageContainer>
       <h1>Applications</h1>

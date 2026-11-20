@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useState } from 'react';
+import { Button, TextField } from '@mui/material';
 import type { SubmitEventHandler } from 'react';
 
 import { useCreateJobApplicationComment } from '~/services/queries';
 
-import styles from '~/styles/components/application-comment-form.module.css';
+const COLLAPSE_TIMEOUT = 500;
 
 interface CommentFormProps {
   commentableId: number;
@@ -12,11 +13,11 @@ interface CommentFormProps {
 const ApplicationCommentForm = (props: CommentFormProps) => {
   const { commentableId } = props;
 
-  const textControlRef = useRef<HTMLTextAreaElement>(null);
+  const [textFieldFocused, setTextFieldFocused] = useState(false);
+  const [commentText, setCommentText] = useState('');
 
   const resetTextControl = () => {
-    const textControl = textControlRef.current;
-    textControl!.value = '';
+    setCommentText('');
   };
 
   const createCommentMutation = useCreateJobApplicationComment(commentableId, { onSuccess: resetTextControl });
@@ -30,10 +31,22 @@ const ApplicationCommentForm = (props: CommentFormProps) => {
   return (
     <form onSubmit={submitForm}>
       <h2>New comment</h2>
-      <textarea ref={textControlRef} name="text" placeholder="Comment" rows={1} className={styles.textInput}></textarea>
-      <button type="submit" className="btn btn-primary">
+      <TextField
+        type="text"
+        label="Comment text"
+        value={commentText}
+        onChange={(e) => setCommentText(e.target.value)}
+        onFocus={() => setTextFieldFocused(true)}
+        onBlur={() => setTimeout(() => setTextFieldFocused(false), COLLAPSE_TIMEOUT)}
+        minRows={textFieldFocused ? 5 : 1}
+        name="text"
+        multiline
+        margin="normal"
+        fullWidth
+      />
+      <Button type="submit" variant="contained" color="primary" size="large" sx={{ mt: 4 }}>
         Submit
-      </button>
+      </Button>
     </form>
   );
 };

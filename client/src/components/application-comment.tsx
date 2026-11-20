@@ -1,3 +1,5 @@
+import { Button } from '@mui/material';
+
 import type { Comment, JobApplication } from '~/types';
 
 import styles from '~/styles/components/application-comment.module.css';
@@ -20,9 +22,9 @@ const ApplicationComment = (props: ApplicationCommentProps) => {
   return (
     <div className={styles.comment}>
       <span className={styles.commentDate}>{comment.createdAtYmd}</span>
-      <button className={[styles.commentButton, 'btn-unstyled'].join(' ')} onClick={onClickDeleteButton}>
+      <Button className={styles.commentButton} onClick={onClickDeleteButton}>
         ✕
-      </button>
+      </Button>
       <div className={styles.commentText}>{comment.text}</div>
     </div>
   );

@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { Button, TextField } from '@mui/material';
 import type { SubmitEventHandler } from 'react';
 
 import { useCreateJobApplicationQuestion } from '~/services/queries';
 
-import styles from '~/styles/components/application-question-form.module.css';
+const COLLAPSE_TIMEOUT = 500;
 
 interface QuestionFormProps {
   jobApplicationId: number;
@@ -14,6 +15,11 @@ const ApplicationQuestionForm = (props: QuestionFormProps) => {
 
   const promptTextControlRef = useRef<HTMLTextAreaElement>(null);
   const answerTextControlRef = useRef<HTMLTextAreaElement>(null);
+
+  const [promptFieldFocused, setPromptFieldFocused] = useState(false);
+  const [commentPrompt, setCommentPrompt] = useState('');
+  const [answerFieldFocused, setAnswerFieldFocused] = useState(false);
+  const [commentAnswer, setCommentAnswer] = useState('');
 
   const resetTextControl = () => {
     const promptTextControl = promptTextControlRef.current;
@@ -35,26 +41,35 @@ const ApplicationQuestionForm = (props: QuestionFormProps) => {
   return (
     <form onSubmit={submitForm}>
       <h2>New question</h2>
-      <textarea
-        ref={promptTextControlRef}
+      <TextField
         name="prompt"
-        placeholder="Prompt"
-        rows={1}
-        className={styles.promptInput}
-      ></textarea>
-      <label>
-        <span>Answer</span>
-        <textarea
-          ref={answerTextControlRef}
-          name="answer"
-          placeholder="Answer"
-          rows={1}
-          className={styles.answerInput}
-        ></textarea>
-      </label>
-      <button type="submit" className="btn btn-primary">
+        type="text"
+        label="Prompt"
+        value={commentPrompt}
+        onChange={(e) => setCommentPrompt(e.target.value)}
+        onFocus={() => setPromptFieldFocused(true)}
+        onBlur={() => setTimeout(() => setPromptFieldFocused(false), COLLAPSE_TIMEOUT)}
+        minRows={promptFieldFocused ? 5 : 1}
+        multiline
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        name="answer"
+        type="text"
+        label="Answer"
+        value={commentAnswer}
+        onChange={(e) => setCommentAnswer(e.target.value)}
+        onFocus={() => setAnswerFieldFocused(true)}
+        onBlur={() => setTimeout(() => setAnswerFieldFocused(false), COLLAPSE_TIMEOUT)}
+        minRows={answerFieldFocused ? 5 : 1}
+        multiline
+        margin="normal"
+        fullWidth
+      />
+      <Button type="submit" variant="contained" color="primary" size="large" sx={{ mt: 4 }}>
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
