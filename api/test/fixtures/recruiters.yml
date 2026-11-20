@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: Bob
+  last_name: Jobsman
+  linked_in_url: https://www.linkedin.com/in/bobjobson/
+  email_address: bob.jobson@staffing.com
+  phone_number: 1-201-123-4567
+
+two:
+  first_name: Alice
+  last_name: Indenture
+  linked_in_url: https://www.linkedin.com/in/aliceindenture/
+  email_address: a.indenture@shanghaitoday.biz
+  phone_number: 1-201-123-4568
