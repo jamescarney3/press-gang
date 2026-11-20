@@ -5,4 +5,6 @@ class Comment < ApplicationRecord
 
   belongs_to :commentable, polymorphic: true
   belongs_to :user
+
+  validates :commentable_type, inclusion: { in: %w[JobApplication Recruiter] }
 end
