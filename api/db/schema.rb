@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_04_192827) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_20_234501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,11 +36,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_04_192827) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.string "listing_url", null: false
+    t.bigint "recruiter_id"
     t.string "role_title", null: false
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["company_id"], name: "index_job_applications_on_company_id"
+    t.index ["recruiter_id"], name: "index_job_applications_on_recruiter_id"
     t.index ["user_id"], name: "index_job_applications_on_user_id"
   end
 
@@ -53,6 +55,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_04_192827) do
     t.bigint "user_id", null: false
     t.index ["job_application_id"], name: "index_questions_on_job_application_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "recruiters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email_address"
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.string "linked_in_url"
+    t.string "phone_number"
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
