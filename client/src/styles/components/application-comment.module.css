@@ -7,10 +7,10 @@
 }
 
 .comment-button {
-  position: absolute;
-  padding: var(--spacing-2);
+  position: absolute !important;
   top: 0;
   right: 0;
+  min-width: unset !important;
 }
 
 .comment-date {

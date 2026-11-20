@@ -1,3 +1,5 @@
+import { Button } from '@mui/material';
+
 import type { Question, JobApplication } from '~/types';
 
 import styles from '~/styles/components/application-question.module.css';
@@ -20,9 +22,9 @@ const ApplicationComment = (props: ApplicationQuestionProps) => {
   return (
     <div className={styles.question}>
       <span className={styles.questionDate}>{question.createdAtYmd}</span>
-      <button className={[styles.questionButton, 'btn-unstyled'].join(' ')} onClick={onClickDeleteButton}>
+      <Button className={styles.questionButton} onClick={onClickDeleteButton}>
         ✕
-      </button>
+      </Button>
       <h3 className={styles.questionHeading}>Prompt:</h3>
       <p className={styles.questionPrompt}>{question.prompt}</p>
       <h3 className={styles.questionHeading}>Answer:</h3>

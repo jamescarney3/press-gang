@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import type { SubmitEventHandler } from 'react';
+import { Button, TextField } from '@mui/material';
 
 import { useCreateJobApplication } from '~/services/queries';
 import { serializeFormData } from '~/utils/form-data';
+import PageContainer from '~/components/page-container';
 import type { JobApplication } from '~/types';
 
 const JobApplicationsNew = () => {
@@ -21,34 +23,30 @@ const JobApplicationsNew = () => {
   };
 
   return (
-    <section>
+    <PageContainer>
       <h1>Create Job Application</h1>
       <form onSubmit={submitJobApplicationForm}>
-        <label>
-          <span>Company name:</span>
-          <input name="companyAttributes[name]" autoComplete="off" />
-        </label>
+        <TextField
+          name="companyAttributes[name]"
+          label="Company name"
+          autoComplete="off"
+          margin="normal"
+          sx={{ minWidth: 300 }}
+        />
+        <TextField name="roleTitle" label="Role title" autoComplete="off" margin="normal" />
+        <TextField name="listingUrl" label="Listing URL" autoComplete="off" margin="normal" />
+        <TextField
+          name="companyAttributes[websiteUrl]"
+          label="Company website URL"
+          autoComplete="off"
+          margin="normal"
+        />
 
-        <label>
-          <span>Role title:</span>
-          <input name="roleTitle" autoComplete="off" />
-        </label>
-
-        <label>
-          <span>Listing url:</span>
-          <input name="listingUrl" autoComplete="off" />
-        </label>
-
-        <label>
-          <span>Company website url:</span>
-          <input name="companyAttributes[websiteUrl]" autoComplete="off" />
-        </label>
-
-        <button type="submit" className="btn btn-primary">
+        <Button type="submit" variant="contained" color="primary" size="large" sx={{ mt: 4 }}>
           Create job application
-        </button>
+        </Button>
       </form>
-    </section>
+    </PageContainer>
   );
 };
 
