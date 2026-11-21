@@ -56,14 +56,19 @@ if Rails.env.development?
 
   users.each do |u|
     companies.each do |c|
-      JobApplication.find_or_create_by(user: u, company: c) do |ja|
+      JobApplication.find_or_create_by!(user: u, company: c) do |ja|
         ja.role_title = titles.shift
         ja.listing_url = "#{c.website_url}/jobs/#{ja.role_title.gsub(/\s+/, '')}"
         u.comments.find_or_create_by(commentable: ja, text: 'generic comment')
         u.questions.find_or_create_by(job_application: ja, prompt: "generic question about work from #{c.name}",
-                           answer: "generic answer about work that makes a compelling argument to #{c.name}"\
+                                      answer: "generic answer about work that makes a compelling argument to #{c.name}"\
                                    "for hiring #{u.first_name}")
       end
     end
   end
+
+  # this is probably a sign that this module should use faker or a similar gem for seed data
+  bob_jobson = Recruiter.create(first_name: 'Bob', last_name: 'Jobson');
+  JobApplication.first.update(recruiter: bob_jobson)
+  JobApplication.last.update(recruiter: bob_jobson)
 end
