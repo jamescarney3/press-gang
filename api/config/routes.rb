@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :companies, only: %i[index]
       resources :comments, only: %i[index create destroy]
       resources :questions, only: %i[index create destroy]
+      resources :recruiters, only: %i[index create show]
     end
   end
 end

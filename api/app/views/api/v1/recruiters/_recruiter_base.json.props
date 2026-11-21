@@ -1,0 +1,1 @@
+json.extract! recruiter, :id, :first_name, :last_name, :email_address, :phone_number, :linked_in_url

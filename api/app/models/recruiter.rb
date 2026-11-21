@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Recruiter < ApplicationRecord
   has_many :comments
   has_many :job_applications

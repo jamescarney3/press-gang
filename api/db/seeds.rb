@@ -68,7 +68,7 @@ if Rails.env.development?
   end
 
   # this is probably a sign that this module should use faker or a similar gem for seed data
-  bob_jobson = Recruiter.create(first_name: 'Bob', last_name: 'Jobson');
+  bob_jobson = Recruiter.create(first_name: 'Bob', last_name: 'Jobson', email_address: 'bob.jobson@corvee.com')
   JobApplication.first.update(recruiter: bob_jobson)
   JobApplication.last.update(recruiter: bob_jobson)
 end

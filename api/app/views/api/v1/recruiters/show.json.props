@@ -1,0 +1,13 @@
+json.partial!(partial: 'api/v1/recruiters/recruiter_base', locals: { recruiter: @recruiter })
+
+json.job_applications do
+  json.array! @recruiter.job_applications do |job_application|
+    json.id job_application.id
+    json.role_title job_application.role_title
+    json.status job_application.status
+
+    json.company do
+      json.name job_application.company.name
+    end
+  end
+end

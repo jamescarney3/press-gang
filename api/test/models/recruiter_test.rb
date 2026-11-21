@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class RecruiterTest < ActiveSupport::TestCase
   test 'downcases and strips email_address' do
